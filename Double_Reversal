@@ -1,0 +1,32 @@
+// Problem 2119:- A Number After a Double Reversal
+/* Reversing an integer means to reverse all its digits.
+
+For example, reversing 2021 gives 1202. Reversing 12300 gives 321 as the leading zeros are not retained.
+Given an integer num, reverse num to get reversed1, then reverse reversed1 to get reversed2. Return true if reversed2 equals num. Otherwise return false.
+*/
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        int orgnum=num;
+        int rev1=0,rev2=0;
+        while(num!=0){
+            int digit=num%10;
+            rev1=rev1*10+digit;
+            num/=10;
+        }
+        while(rev1!=0){
+            int dig=rev1%10;
+            rev2=rev2*10+dig;
+            rev1/=10;
+        }
+        if(orgnum==rev2){
+            return true;
+        }else{
+            return false;
+        }
+/* alternative way
+      if(num==0) return true;
+          else if(num%10==0) return false;
+          else return true;
+*/
+    }
+}
